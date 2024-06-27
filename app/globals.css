@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face{
+    font-family: 'poppins-regular';
+    src: url("../public/Poppins/static/Poppins-Regular.ttf") format('truetype');
+}
+
+body {
+    font-family: 'poppins-regular' !important;
+    
+}
