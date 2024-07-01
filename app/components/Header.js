@@ -59,7 +59,7 @@ const Header = () => {
         <a href="#" className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 ${activeMenu === '/videos' ? 'bg-gradient-to-r from-transparent to-blue-500' : ''}`} onClick={() => toggleGradient('/videos')}>
           Videos
         </a>
-        <a href="/blogs" className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 ${activeMenu === '/blogs' ? 'bg-gradient-to-r from-transparent to-blue-500' : ''}`} onClick={() => toggleGradient('/blogs')}>
+        <a href="/blogs" style={{ backgroundImage: 'linear-gradient(263.3deg, rgba(255, 255, 255, 0) 7.35%, rgba(116, 205, 219, 0.65) 92.32%)' }} className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 ${activeMenu === '/blogs' ? 'bg-gradient-to-bl from-transparent via-transparent to-[rgba(116, 205, 219, 0.65)]' : ''}`} onClick={() => toggleGradient('/blogs')}>
           Blogs
         </a>
         <a href="#" className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 ${activeMenu === '/news' ? 'bg-gradient-to-r from-transparent to-blue-500' : ''}`} onClick={() => toggleGradient('/news')}>
