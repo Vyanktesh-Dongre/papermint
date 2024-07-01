@@ -24,12 +24,12 @@ const Header = () => {
 
       {/* Navigation Buttons */}
       <div className="relative flex items-center space-x-4 py-1.25"
-        style={{ width: '907px', height: '66px', top: '10px', padding: '5px' }}>
+        style={{ width: '912px', height: '66px', top: '10px', padding: '5px' }}>
         <button className="text-gray-700 hover:text-gray-900 font-medium text-16px leading-24px transition-colors" style={{ width: '48px', height: '24px' }}>
           Home
         </button>
         <button className="text-gray-700 hover:text-gray-900 font-medium text-16px leading-24px transition-colors" style={{ width: '74px', height: '24px' }}>
-          AboutUs
+          About Us
         </button>
         <button className="text-gray-700 hover:text-gray-900 font-medium text-16px leading-24px transition-colors" style={{ width: '73px', height: '24px' }}>
           Solutions
@@ -75,7 +75,7 @@ const Header = () => {
           Partnerships
         </button>
         <button className=" rounded-[10px] bg-[#3C3F58] border border-gray-300 text-white" style={{ width: '126px', height: '56px' }}>
-          ContactUs
+          Contact Us
         </button>
       </div>
     </div>

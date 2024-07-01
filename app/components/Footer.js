@@ -4,6 +4,7 @@ import img2 from 'public/X.png';
 import img3 from 'public/Linkedin.png';
 import img4 from 'public/fb_2.png';
 import img5 from 'public/copy.png';
+import img6 from 'public/Up.png';
 
 const Footer = () => {
     return(
@@ -21,7 +22,7 @@ const Footer = () => {
                     <p  className="text-[#FFFFFF] ml-2">2023 peppermint. all rights reserved.</p>
                 </div>
 
-                <div class="absolute w-[92px] h-[164px] top-[11px] left-[437px]">
+                <div class="absolute w-[92px] h-[164px] top-[11px] left-[410px]">
                     <h1 className="mb-4 text-[#FFFFFF] font-bold " >Company</h1>
                     <button class=" w-full text-left  py-2 text-[#FFFFFF] ">About</button>
                     <button class=" w-full text-left py-2 text-[#FFFFFF] ">Blog</button>
@@ -29,19 +30,28 @@ const Footer = () => {
                     <button class=" w-full text-left py-2 text-[#FFFFFF] ">Careers</button>
                 </div>
 
-                <div class="absolute w-[108px] h-[135px] top-[11px] left-[650px]">
+                <div class="absolute w-[108px] h-[135px] top-[11px] left-[590px]">
                     <h1 className="mb-4 text-[#FFFFFF] font-bold " >Need Help ?</h1>
                     <button class=" w-full text-left  py-2 text-[#FFFFFF] ">Contact Us</button>
                     <button class=" w-full text-left py-2 text-[#FFFFFF] ">FAQ</button>
                     <button class=" w-full text-left py-2 text-[#FFFFFF] ">All Links</button>
                 </div>
 
-                <div class="absolute w-[277px] h-[90px] top-[11px] left-[812.25px]">
+                <div class="absolute w-[277px] h-[90px] top-[11px] left-[780px]">
                     <p className="text-[#FFFFFF] font-bold">Subscribe to Our Newsletter</p>
                     <div class="relative mt-3">
                         <input type="email" class="w-[277px] h-[48px] px-5 py-2 bg-[#3B3C4A] border border-[#ffffff] rounded-[10px] focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email Address" />
                     </div>
                 </div>
+
+                <div className="absolute w-[32px] h-[32] top-[11px] left-[1125px]">
+                    <Image src={img6} alt="company logo" />
+                </div>
+
+                <div className="absolute w-[173px] h-[18] top-[210px] left-[965px]">
+                    <p className="text-[12px] text-[#FFFFFF]">Terms Of Use | Privacy Policy </p>
+                </div>
+
             </div>
         </div>
     )
