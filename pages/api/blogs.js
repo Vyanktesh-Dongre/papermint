@@ -45,7 +45,7 @@ async function handleGetRequest(query, res) {
     const blogs = await db.collection('blogs').find(filter).toArray();
 
     // Debugging: Log fetched blogs
-    console.log('Filtered Blogs:', blogs);
+   // console.log('Filtered Blogs:', blogs);
 
     res.status(200).json(blogs);
   } catch (error) {
