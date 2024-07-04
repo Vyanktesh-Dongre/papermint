@@ -26,8 +26,8 @@ async function handleGetRequest(query, res) {
     // Extract and clean filter parameters from query string
     const selectedCategories = query.categories ? query.categories.split(',').map(category => category.trim()) : [];
 
-    // Debugging: Log selected categories
-    console.log('Selected Categories:', selectedCategories);
+    // // Debugging: Log selected categories
+    // console.log('Selected Categories:', selectedCategories);
 
     // Prepare filter based on selected categories
     const filter = {};
@@ -41,7 +41,8 @@ async function handleGetRequest(query, res) {
     }
 
     // Fetch blogs based on filter
-    const blogs = await db.collection('blogs').find(filter).limit(6).toArray();
+    //const blogs = await db.collection('blogs').find(filter).limit(9).toArray();
+    const blogs = await db.collection('blogs').find(filter).toArray();
 
     // Debugging: Log fetched blogs
     console.log('Filtered Blogs:', blogs);
