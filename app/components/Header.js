@@ -106,24 +106,24 @@ const Header = () => {
 
   return (
     <div className="bg-white md:px-6 md:py-4">
-      <div className="container mx-auto flex justify-items-center">
+      <div className="container px-14 lg:mx-auto flex justify-items-center">
         {/* Company Logo */}
         <div className="flex justify-start">
           <Image src={img} alt="company logo" width={182} height={76} />
         </div>
 
         {/* Mobile Menu Toggle (for smaller screens) */}
-        <div className="md:hidden">
+        <div className="flex justify-end md:hidden">
           <button
-            className="text-gray-700 hover:text-gray-900 focus:outline-none"
+            className=" w-16 h-14 mt-2 text-gray-700 bg-cyan-200 rounded-xl hover:text-gray-900 focus:outline-none"
             onClick={toggleMenu}
           >
-            Menu
+            ---
           </button>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex justify-items-center place-items-center space-x-4 ">
+        <nav className="hidden md:flex justify-items-center place-items-center space-x-10  ">
           <NavButton href="/" text="Home" onClick={() => toggleGradient('/')} />
           <NavButton href="/about" text="About Us" onClick={() => toggleGradient('/about')} />
           <NavButton href="/solutions" text="Solutions" onClick={() => toggleGradient('/solutions')} />
@@ -153,8 +153,8 @@ const Header = () => {
         </nav>
         
         {/* Mobile Menu Dropdown */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-white border border-gray-300 py-2 px-4">
+        {/* {isMenuOpen && (
+          <div className="md:hidden absolute bg-slate-100 border border-gray-300 py-2 px-4">
             <MobileNavButton href="/" text="Home" onClick={() => toggleGradient('/')} />
             <MobileNavButton href="/about" text="About Us" onClick={() => toggleGradient('/about')} />
             <MobileNavButton href="/solutions" text="Solutions" onClick={() => toggleGradient('/solutions')} />
@@ -169,7 +169,30 @@ const Header = () => {
             <MobileNavButton href="/news" text="News" onClick={() => toggleGradient('/news')} />
             <MobileNavButton href="/events" text="Events" onClick={() => toggleGradient('/events')} />
           </div>
+        )} */}
+        {isMenuOpen && (
+          <div className='absolute ml-[268px] top-[20px]'>
+              <DropdownMenu
+          buttonLabel="Menu"
+          items={[
+            { href: '/about', text: 'About' },
+            { href: '/solutions', text: 'Solutions' },
+            { href: '/products', text: 'Products' },
+            { href: '/platform', text: 'Platforms' },
+            { href: '/industries', text: 'Industries' },
+            { href: '/partnerships', text: 'Partnerships' },
+            { href: '/case-studies', text: 'Case Studies' },
+            { href: '/videos', text: 'Videos' },
+            { href: '/product-brochures', text: 'Product Brochures' },
+            { href: '/news', text: 'News' },
+          ]}
+          activeMenu={activeMenu}
+          toggleGradient={toggleGradient}
+        />
+          </div>
+  
         )}
+
       </div>
     </div>
   );

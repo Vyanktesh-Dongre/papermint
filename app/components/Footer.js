@@ -72,7 +72,7 @@ const Footer = () => {
     <div className="w-full bg-[#3B3C4A] py-10">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Column 1 */}
-        <div className="md:col-span-1">
+        <div className="hidden lg:block md:col-span-1">
           <Image src={img} alt="company logo" width={184} height={76} />
           <p className="text-white text-sm mt-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
@@ -124,7 +124,7 @@ const Footer = () => {
         <div className="flex items-center">
           <Image src={img6} alt="Back to Top" width={32} height={32} />
         </div>
-        <p className="text-center">Terms Of Use | Privacy Policy</p>
+        <p className="mr-6">Terms Of Use | Privacy Policy</p>
       </div>
     </div>
   );
