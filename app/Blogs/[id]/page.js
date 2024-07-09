@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect, useState, useCallback } from 'react';
+
 import backImage from 'public/bg.png';
 import Image from 'next/image';
 import img from 'public/Ellipse.png';
@@ -6,6 +10,42 @@ import img3 from 'public/rect.png';
 import img4 from 'public/hand.png';     
 
 export default function Page({params}) {
+
+    const id = params.id;
+    console.log(id);
+    const [blog, setBlog] = useState(null); // Initially null to indicate no data loaded
+    const [error, setError] = useState(null); // State for handling errors
+  
+    const fetchBlog = useCallback(async () => {
+      try {
+        const response = await fetch(`/api/blogs?id=${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Fetched Blog:', data);
+        setBlog(data[0]);
+      } catch (error) {
+        console.error('Error fetching blog:', error);
+        setError(error.message);
+      }
+    }, [id]);
+  
+    useEffect(() => {
+      if (id) {
+        fetchBlog();
+      }
+    }, [fetchBlog, id]);
+  
+    if (error) {
+      return <div>Error: {error}</div>;
+    }
+  
+    if (!blog) {
+      return <div>Loading...</div>;
+    }
+
+
     return (   
     <>  
             <div className='relative flex flex-col items-center'>
@@ -36,12 +76,12 @@ export default function Page({params}) {
                                     {/* Posted By Section */}
                                     <div className='flex items-center mt-4'>
                                     <Image className='ml-3' src={img} alt="Author Avatar" width={24} height={24} />
-                                    <p className='ml-3 text-sm text-[#3B3C4A]'>Posted by - </p>
+                                    <p className='ml-3 text-sm text-[#3B3C4A]'>Posted by - Author </p>
                                     </div>
 
                                     {/* Blog Title */}
                                     <div className='w-[642px] ml-3 mt-2'>
-                                    <p className='text-[16px]'>Robotic Floor Scrubbers – The Future of Autonomous Cleaning at Airports</p>
+                                    <p className='text-[16px]'>{blog.title}</p>
                                     </div>
 
                                     {/* Tags */}
@@ -66,46 +106,7 @@ export default function Page({params}) {
 
                                     {/* Blog Content */}
                                     <div className='w-[642px] grid  mt-2 md:mt-4 ml-3 md:ml-0 mb-20'>
-                                    <p className='text-sm md:text-base text-[#3B3C4A]'>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, maximus sed nisl sit amet,
-                                        convallis iaculis lorem. Integer id maximus turpis. Praesent pretium ultrices lorem ut porttitor. Cras quis
-                                        bibendum ante. Vivamus accumsan magna lectus, vitae malesuada dolor vulputate nec. Nunc a enim ac odio
-                                        placerat rutrum eu at felis.
-                                    </p>
+                                    <p className='text-sm md:text-base text-[#3B3C4A]'>{blog.content}</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,8 +197,3 @@ export default function Page({params}) {
         </>
     )}
 
-    
-
-
-
-   

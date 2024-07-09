@@ -170,7 +170,7 @@ export default function Blogs() {
                 <p className="text-sm text-[#3B3C4A]">{truncateText(blog.summary, 70)}</p>
                 <div className="flex justify-between items-center mt-4">
                   <p className="text-xs text-[#999999]">{blog.readTime}</p>
-                  <a href="#" className="text-[#74CDDB] text-sm font-semibold flex items-center">
+                  <a href={`/blogs/${blog.id}`} className="text-[#74CDDB] text-sm font-semibold flex items-center">
                     Read More <Image className="ml-2" src={arr} alt="arrow" width={20} height={20} />
                   </a>
                 </div>
