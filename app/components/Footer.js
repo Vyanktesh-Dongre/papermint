@@ -9,11 +9,11 @@ import img6 from 'public/Up.png';
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#3B3C4A] py-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="w-full bg-[#3B3C4A] py-10 xl:flex xl:justify-center xd:items-center">
+      <div className="container max-w-[1280px] px-[69.25px] grid grid-cols-2 lg:grid-cols-[280px_1fr_1fr_1fr] gap-x-[88px]">
         {/* Column 1 */}
         <div className="hidden lg:block md:col-span-1">
-          <Image src={img} alt="company logo" width={184} height={76} />
+          <Image className="w-[184px] h-[76px]" src={img} alt="company logo" />
           <p className="text-white text-sm mt-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
           </p>
@@ -50,8 +50,11 @@ const Footer = () => {
         </div>
 
         {/* Column 4 */}
-        <div className="md:col-span-1">
-          <h1 className="text-white font-bold mb-4">Subscribe to Our Newsletter</h1>
+        <div className="hidden lg:block lg:w-[277px] md:col-span-1 ">
+          <div className="flex justify-between mb-4">
+            <h1 className="text-white font-bold">Subscribe to Our Newsletter</h1>
+      
+          </div>
           <input 
             type="email" 
             className="w-full h-12 px-5 py-2 bg-[#3B3C4A] border border-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" 
@@ -59,18 +62,8 @@ const Footer = () => {
           />
         </div>
       </div>
-
-      <div className="mt-8 flex justify-between items-center text-white text-xs">
-        <div className="flex items-center">
-          <Image src={img6} alt="Back to Top" width={32} height={32} />
-        </div>
-        <p className="mr-6">Terms Of Use | Privacy Policy</p>
-      </div>
     </div>
   );
 }
 
 export default Footer;
-
-
-

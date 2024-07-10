@@ -20,25 +20,22 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-white md:px-6 md:py-4">
-      <div className="container px-14 lg:mx-auto flex justify-items-center">
+    <div className="flex md:justify-start md:mx-10 xl:mx-auto ">
+      <div className="container flex gap-[51px] ">
         {/* Company Logo */}
-        <div className="flex justify-start">
+        <div className="">
           <Image src={img} alt="company logo" width={182} height={76} />
         </div>
 
         {/* Mobile Menu Toggle (for smaller screens) */}
-        <div className="flex justify-end md:hidden">
-          <button
-            className=" w-16 h-14 mt-2 text-gray-700 bg-cyan-200 rounded-xl hover:text-gray-900 focus:outline-none"
-            onClick={toggleMenu}
-          >
-            ---
+        <div className=" ml-auto  xl:hidden">
+          <button className=" w-16 h-14 mt-2 text-gray-700 rounded-xl hover:text-gray-900 focus:outline-none"
+                  onClick={toggleMenu}> ---
           </button>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex justify-items-center place-items-center space-x-10  ">
+        <nav className="hidden xl:flex justify-items-center place-items-center gap-[20px]  ">
           <NavButton href="/" text="Home" onClick={() => toggleGradient('/')} />
           <NavButton href="/about" text="About Us" onClick={() => toggleGradient('/about')} />
           <NavButton href="/solutions" text="Solutions" onClick={() => toggleGradient('/solutions')} />
@@ -62,34 +59,10 @@ const Header = () => {
           />
 
           <NavButton href="/partnerships" text="Partnerships" onClick={() => toggleGradient('/partnerships')} />
-          <button className="rounded-full bg-[#3C3F58] border border-gray-300 text-white py-2 px-6">
+          <button className="rounded-[10px] w-[126px] h-[56px] bg-[#3C3F58] border border-gray-300 text-white">
             Contact Us
           </button>
         </nav>
-        
-        {isMenuOpen && (
-          <div className='absolute ml-[268px] top-[20px]'>
-              <DropdownMenu
-          buttonLabel="Menu"
-          items={[
-            { href: '/about', text: 'About' },
-            { href: '/solutions', text: 'Solutions' },
-            { href: '/products', text: 'Products' },
-            { href: '/platform', text: 'Platforms' },
-            { href: '/industries', text: 'Industries' },
-            { href: '/partnerships', text: 'Partnerships' },
-            { href: '/case-studies', text: 'Case Studies' },
-            { href: '/videos', text: 'Videos' },
-            { href: '/product-brochures', text: 'Product Brochures' },
-            { href: '/news', text: 'News' },
-          ]}
-          activeMenu={activeMenu}
-          toggleGradient={toggleGradient}
-        />
-          </div>
-  
-        )}
-
       </div>
     </div>
   );
@@ -106,24 +79,13 @@ const NavButton = ({ href, text, onClick }) => (
   </a>
 );
 
-// MobileNavButton component for individual navigation buttons (mobile dropdown)
-const MobileNavButton = ({ href, text, onClick }) => (
-  <a
-    href={href}
-    className={`block py-2 text-gray-700 hover:bg-gray-100`}
-    onClick={onClick}
-  >
-    {text}
-  </a>
-);
-
 // DropdownMenu component for the Resources dropdown (desktop)
 const DropdownMenu = ({ buttonLabel, items, activeMenu, toggleGradient }) => (
   <div className="relative group">
     <button className={`text-gray-700 hover:text-gray-900 font-medium transition-colors`}>
       {buttonLabel}
     </button>
-    <div className="absolute left-0 mt-2 w-[250px] bg-white border border-[#E6E6E6] rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+    <div className="absolute  mt-2 w-[250px] bg-white border border-[#E6E6E6] rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
       {items.map((item) => (
         <a
           key={item.href}
@@ -141,5 +103,4 @@ const DropdownMenu = ({ buttonLabel, items, activeMenu, toggleGradient }) => (
 );
 
 export default Header;
-
 

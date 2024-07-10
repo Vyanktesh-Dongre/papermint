@@ -7,7 +7,8 @@ import Image from 'next/image';
 import img from 'public/Ellipse.png';
 import img2 from 'public/share.png'; 
 import img3 from 'public/rect.png';
-import img4 from 'public/hand.png';     
+import img4 from 'public/hand.png';
+import img5 from 'public/Search.png';
 
 export default function Page({params}) {
 
@@ -48,7 +49,7 @@ export default function Page({params}) {
 
     return (   
     <>  
-            <div className='relative flex flex-col items-center'>
+            <div className='relative flex flex-col items-center xl:mx-auto xl:justify-items-center xl:w-min-[1280px] '>
               <div className="relative w-full">
                 <Image className='hidden lg:block w-full' src={backImage} alt="Background" height={233} />
                   <div className="absolute inset-0 flex flex-col items-center justify-center bg-opacity-50">
@@ -64,14 +65,14 @@ export default function Page({params}) {
                         <div className=" w-full grid row-span-5 px-4 ml-4 md:px-0">
                             <div className='relative gap-4 mt-4'>
                                 {/* Search Form */}
-                                <form>
-                                <div className='flex items-center'>
-                                    <div className="absolute left-3 top-3 pointer-events-none">
-                                    <svg className="w-5 h-14 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                                    </div>
+          
+                                <div className='relative flex justify-start mb-8'>
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3">
+                                  <Image className="w-[24px] h-[24px]" src={img5} alt="Search Icon" />
+                                </div>
                                     <input type="search" name="search" placeholder='Search' className=" pl-10 w-full md:w-[750px] h-14 text-gray-900 dark:text-gray-300 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
                                 </div>
-                                </form>
+                              
 
                                     {/* Posted By Section */}
                                     <div className='flex items-center mt-4'>
