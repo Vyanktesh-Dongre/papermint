@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState, useCallback } from 'react';
-
 import backImage from 'public/bg.png';
 import Image from 'next/image';
 import img from 'public/Ellipse.png';
@@ -9,43 +8,84 @@ import img2 from 'public/share.png';
 import img3 from 'public/rect.png';
 import img4 from 'public/hand.png';
 import img5 from 'public/Search.png';
+import arr from 'public/arrow.png';
+import box from 'public/box.png';
 
 export default function Page({params}) {
 
-    const id = params.id;
-    console.log(id);
-    const [blog, setBlog] = useState(null); // Initially null to indicate no data loaded
-    const [error, setError] = useState(null); // State for handling errors
-  
-    const fetchBlog = useCallback(async () => {
-      try {
-        const response = await fetch(`/api/blogs?id=${id}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Fetched Blog:', data);
-        setBlog(data[0]);
-      } catch (error) {
-        console.error('Error fetching blog:', error);
-        setError(error.message);
-      }
-    }, [id]);
-  
-    useEffect(() => {
-      if (id) {
-        fetchBlog();
-      }
-    }, [fetchBlog, id]);
-  
-    if (error) {
-      return <div>Error: {error}</div>;
-    }
-  
-    if (!blog) {
-      return <div>Loading...</div>;
-    }
+  const id = params.id;
+  console.log(id);
+  const [blog, setBlog] = useState(null); 
+  const [error, setError] = useState(null); 
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(null);
+  const [startIndex, setStartIndex] = useState(0);
 
+  // Number of blogs to display at a time
+  const blogsPerPage = 2;
+
+  // Function to go to the next set of blogs
+  const showNextBlogs = () => {
+    setStartIndex(prevIndex => Math.min(prevIndex + blogsPerPage, blogs.length - blogsPerPage));
+  };
+
+  // Function to go to the previous set of blogs
+  const showPreviousBlogs = () => {
+    setStartIndex(prevIndex => Math.max(prevIndex - blogsPerPage, 0));
+  };
+  
+  const fetchBlogs = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/blogs`);
+      const data = await response.json();
+      console.log('Fetched Blogs:', data);
+      setBlogs(data);
+    } catch (error) {
+      console.error('Error fetching blogs:', error);
+    } 
+    
+  }, [] );
+  
+  useEffect(() => {
+    fetchBlogs();
+  }, [fetchBlogs]);
+
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  };
+
+
+  const fetchBlog = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/blogs?id=${id}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log('Fetched Blog:', data);
+      setBlog(data[0]);
+    } catch (error) {
+      console.error('Error fetching blog:', error);
+      setError(error.message);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      fetchBlog();
+    }
+  }, [fetchBlog, id]);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!blog) {
+    return <div>Loading...</div>;
+  }
 
     return (   
     <>  
@@ -186,15 +226,60 @@ export default function Page({params}) {
                                     <p className='text-[16px] text-[400] px-4 py-4 '>Schedule a free consultation with us, to know how you can reduce spend and secure your cloud journey, today!</p>
                                     <button></button>
                                     </div>
-                                    
                                 </div>
+                                </div>
+                              </div>
+                    </div>
+                    <hr className='mt-2 mb-2   md:mt-6 w-max-[1280px] md:ml-0 border-[1px] border-[#9d6868]' />  
+                        <div className=' justify-items-center lg:mt-5 mx-auto '>
+                        <h1 className='flex justify-items-start mb-8'> Up Next </h1>
+                          <div className='grid grid-cols-1 gap-5 md:gap-[60px] lg:grid-cols-[477px_477px_1fr]  mx-auto '>
+                            {loading ? (
+                              <p>Loading...</p>
+                            ) : blogs.length > 0 ? (
+                              blogs.slice(startIndex, startIndex + blogsPerPage).map(blog => (
+                                <div
+                                  key={blog.id}
+                                  className="w-full md:w-[477px] h-[134px] bg-white rounded-[10px]"
+                                >
+                                  <div className="flex gap-2 border border-gray-300 rounded-[10px]  relative">
+                                    <Image src={box} className="flex w-[135px] h-[134px] rounded-[10px]" alt="Blog Image" />
+                                    <div className=''>
+                                    <h1 className='text-[14px] text-[400] text-[#3B3C4A] mb-2 '>Posted by - John Doe</h1>
+                                    <p className='text-[500] text-[#374151] mb-2'>{blog.title}</p>
+                                    <p className='text-[14px] text-[#74CDDB] mb-2'>Posted -{blog.date} | {blog.readTime}</p>
+                                    <div className='flex gap-5'>
+                                    <p className='text-[11px] text-[#141414] mb-2'>Cloud cost</p>
+                                    <p className='text-[11px] text-[#141414] mb-2'>Cloud cost</p>
+                                    </div>
+                                    </div>  
+                                  </div>
 
                                 </div>
-                            </div>
-
-                    </div>  
+                              ))
+                            ) : (
+                              <p>No blogs found</p>
+                            )}
+                            <div className="flex justify-center mt-6">
+                            {startIndex > 0 && (
+                              <button
+                                onClick={showPreviousBlogs}
+                                className=" w-10 h-10 text-black font-semibold rounded-lg mr-2"
+                              >
+                                P
+                              </button>
+                            )}
+                            {startIndex + blogsPerPage < blogs.length && (
+                              <button
+                                onClick={showNextBlogs}
+                                className=" w-10 h-10 text-black font-semibold rounded-lg"
+                              >
+                                N
+                              </button>
+                            )}
+                          </div>
+                          </div>
+                        </div>
             </div>
-
         </>
     )}
-

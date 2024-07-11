@@ -188,14 +188,7 @@ export default function Blogs() {
                   className="w-[240px] h-[389px] bg-white border border-gray-300 rounded-[10px] p-4 hover:shadow-lg transition-shadow duration-300"
                 >
                 <div className="bg-gray-100 border border-gray-300 rounded-[10px] mb-4 relative">
-                  <Image
-                    src={blog.image}
-                    width={220}
-                    height={185}
-                    className="rounded-[10px]"
-                    alt="Blog Image"
-                    layout="responsive"
-                  />
+                  <Image src={blog.image} width={220} height={185} className="rounded-[10px]" alt="Blog Image" layout="responsive"/>
                   <div className="absolute -mt-36 bg-[#74CDDB] px-2 py-1 rounded-tr-lg">
                     <p className="text-[#000000] text-xs">{truncateText(blog.category, 15)}...</p>
                   </div>

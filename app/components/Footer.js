@@ -10,7 +10,7 @@ import img6 from 'public/Up.png';
 const Footer = () => {
   return (
     <div className="w-full bg-[#3B3C4A] py-10 xl:flex xl:justify-center xd:items-center">
-      <div className="container max-w-[1280px] px-[69.25px] grid grid-cols-2 lg:grid-cols-[280px_1fr_1fr_1fr] gap-x-[88px]">
+      <div className="container max-w-[1280px] px-[69.25px] grid grid-cols-2 lg:grid-cols-[280px_1fr_1fr_1fr_1fr] gap-x-[88px]">
         {/* Column 1 */}
         <div className="hidden lg:block md:col-span-1">
           <Image className="w-[184px] h-[76px]" src={img} alt="company logo" />
@@ -61,6 +61,12 @@ const Footer = () => {
             placeholder="Email Address" 
           />
         </div>
+
+        {/* Column 5 */}
+        <div className="">
+        <Image src={img6} alt="LinkedIn" width={28} height={28} />
+        </div>
+
       </div>
     </div>
   );
