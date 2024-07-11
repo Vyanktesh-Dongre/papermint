@@ -61,12 +61,12 @@ export default function Page({params}) {
                     </div>
                   </div>
                 </div>
-                    <div className='relative px-6 grid grid-cols-2 gap-4 md:ml-0 ml-4'>
-                        <div className=" w-full grid row-span-5 px-4 ml-4 md:px-0">
-                            <div className='relative gap-4 mt-4'>
+                    <div className='relative grid grid-cols-1 lg:grid-cols-[697px_1fr] md:gap-4 xl:max-w-[1280px]  lg:mx-auto'>
+                        <div className="relative w-full row-span-5 px-4 md:px-0">
+                            <div className='relative w-full gap-4 mt-4 '>
                                 {/* Search Form */}
           
-                                <div className='relative flex justify-start mb-8'>
+                                <div className='relative w-full flex justify-start mb-8'>
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3">
                                   <Image className="w-[24px] h-[24px]" src={img5} alt="Search Icon" />
                                 </div>
@@ -76,20 +76,20 @@ export default function Page({params}) {
 
                                     {/* Posted By Section */}
                                     <div className='flex items-center mt-4'>
-                                    <Image className='ml-3' src={img} alt="Author Avatar" width={24} height={24} />
+                                    <Image className='' src={img} alt="Author Avatar" width={24} height={24} />
                                     <p className='ml-3 text-sm text-[#3B3C4A]'>Posted by - Author </p>
                                     </div>
 
                                     {/* Blog Title */}
-                                    <div className='w-[642px] ml-3 mt-2'>
+                                    <div className=' md:w-[642px] mt-2'>
                                     <p className='text-[16px]'>{blog.title}</p>
                                     </div>
 
                                     {/* Tags */}
                                     <div className='flex justify-around text-[11px] text-[#141414] w-full md:w-[425px] mt-2'>
-                                    <p className='bg-[#F4FBFC] rounded-full px-3 py-1'>Peppermint OS</p>
-                                    <p className='bg-[#F4FBFC] rounded-full px-3 py-1'>Peppermint Skateboard</p>
-                                    <p className='bg-[#F4FBFC] rounded-full px-3 py-1'>Peppermint Dashboard</p>
+                                    <p className='bg-[#F4FBFC] rounded-full py-1'>Peppermint OS</p>
+                                    <p className='bg-[#F4FBFC] rounded-full py-1'>Peppermint Skateboard</p>
+                                    <p className='bg-[#F4FBFC] rounded-full py-1'>Peppermint Dashboard</p>
                                     </div>
 
                                     {/* Posted Date and Read Time */}
@@ -103,15 +103,15 @@ export default function Page({params}) {
                                     </div>
 
                                     {/* Horizontal Line */}
-                                    <hr className='mt-2 md:mt-6 w-[85%] ml-4 md:ml-0 border-[1px] border-[#E6E6E6]' />
+                                    <hr className='mt-2 md:mt-6 w-full md:ml-0 border-[1px] border-[#E6E6E6]' />
 
                                     {/* Blog Content */}
-                                    <div className='w-[642px] grid  mt-2 md:mt-4 ml-3 md:ml-0 mb-20'>
+                                    <div className='w-[90%] lg:w-[642px] mt-2 md:mt-4 ml-1 md:ml-0'>
                                     <p className='text-sm md:text-base text-[#3B3C4A]'>{blog.content}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex mt-[85px] ml-[135px] '>
+                            <div className='flex mt-[85px]   '>
                                 <hr className='hidden lg:block md:mt-6 w-0 h-[1411px] border-[1px] border-[#E6E6E6]' />
                                 <div className='hidden lg:block h-auto mt-4 pl-4'>
                                 <div className='text-[#74CDDB] mb-2'>Related Topics</div>

@@ -91,7 +91,7 @@ const DropdownMenu = ({ buttonLabel, items, activeMenu, toggleGradient }) => (
           key={item.href}
           href={item.href}
           className={`block px-4 py-2 text-gray-700 hover:bg-gray-100 ${
-            activeMenu === item.href ? 'bg-gradient-to-r from-transparent to-blue-500' : ''
+            activeMenu === item.href ? 'bg-gradient-to-l from-[#FFFFFF00] to-[#74CDDBA6]' : ''
           }`}
           onClick={() => toggleGradient(item.href)}
         >
