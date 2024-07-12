@@ -10,6 +10,7 @@ import img4 from 'public/hand.png';
 import img5 from 'public/Search.png';
 import arr from 'public/arrow.png';
 import box from 'public/box.png';
+import img6 from 'public/next.png';
 
 export default function Page({params}) {
 
@@ -91,14 +92,13 @@ export default function Page({params}) {
     <>  
             <div className='relative flex flex-col items-center xl:mx-auto xl:justify-items-center xl:w-min-[1280px] '>
               <div className="relative w-full">
-                <Image className='hidden lg:block w-full' src={backImage} alt="Background" height={233} />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-opacity-50">
-                    <div className="hidden lg:block font-poppins text-white text-4xl text-center mb-8">
-                      Blogs
-                    </div>
-                    <div className="hidden lg:block font-poppins text-white text-lg text-center">
+                <Image className="w-full h-[233px]" src={backImage} alt="Background" />
+                  <div className="absolute inset-0 flex flex-col justify-center items-center ">
+                    <h1 className="font-poppins text-[#FFFFFF] text-[600] text-4xl">Blogs</h1>
+                    <div className="w-[6px] h-[59px] bg-[#74CDDB] rounded-[12px] transform -rotate-90 mb-2"></div>
+                    <p className="hidden sm:block sm:text-left md:w-[575px] font-poppins text-[#FFFFFF] text-lg text-[400] md:flex md:justify-center md:text-center  ">
                       Drive Productivity and Cleanliness in Manufacturing Facilities with SD45 Gen2: Your Trusted Cleaning Solution
-                    </div>
+                    </p>
                   </div>
                 </div>
                     <div className='relative grid grid-cols-1 lg:grid-cols-[697px_1fr] md:gap-4 xl:max-w-[1280px]  lg:mx-auto'>
@@ -230,7 +230,7 @@ export default function Page({params}) {
                                 </div>
                               </div>
                     </div>
-                    <hr className='mt-2 mb-2   md:mt-6 w-max-[1280px] md:ml-0 border-[1px] border-[#9d6868]' />  
+                    <hr className='mt-2 mb-2 md:mt-6 w-max-[1280px] md:ml-0 border-[1px] border-[#9d6868]' />  
                         <div className=' justify-items-center lg:mt-5 mx-auto '>
                         <h1 className='flex justify-items-start mb-8'> Up Next </h1>
                           <div className='grid grid-cols-1 gap-5 md:gap-[60px] lg:grid-cols-[477px_477px_1fr]  mx-auto '>
@@ -260,22 +260,13 @@ export default function Page({params}) {
                             ) : (
                               <p>No blogs found</p>
                             )}
-                            <div className="flex justify-center mt-6">
+                            <div className="flex justify-center items-center gap-2 ">
+                            
                             {startIndex > 0 && (
-                              <button
-                                onClick={showPreviousBlogs}
-                                className=" w-10 h-10 text-black font-semibold rounded-lg mr-2"
-                              >
-                                P
-                              </button>
+                              <Image className='w-[40px] h-[40px] transform rotate-180' src={img6} alt="prev-blog" onClick={showPreviousBlogs} />
                             )}
                             {startIndex + blogsPerPage < blogs.length && (
-                              <button
-                                onClick={showNextBlogs}
-                                className=" w-10 h-10 text-black font-semibold rounded-lg"
-                              >
-                                N
-                              </button>
+                              <Image className='w-[40px] h-[40px] ' src={img6} alt="next-blog" onClick={showNextBlogs}  />
                             )}
                           </div>
                           </div>
